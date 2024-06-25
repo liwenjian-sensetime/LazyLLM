@@ -19,6 +19,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
       - name: Set up python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
@@ -33,7 +36,7 @@ jobs:
       - name: Test import
         working-directory: ${{ vars.RUNNER_TEMP }}
         shell: bash
-        run: python -c "import lazyllm"
+        run: python -c "import lazyllm" && cp LazyLLM-Env/poetry.lock .
       - name: Build and publish to pypi
         uses: JRubics/poetry-publish@v1.17
         with:
