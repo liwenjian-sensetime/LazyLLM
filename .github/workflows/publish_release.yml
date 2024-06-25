@@ -31,6 +31,7 @@ jobs:
         shell: bash
         run: pip install -e .
       - name: Test import
+        working-directory: ${{ vars.RUNNER_TEMP }}
         shell: bash
         run: python -c "import lazyllm"
       - name: Build and publish to pypi
