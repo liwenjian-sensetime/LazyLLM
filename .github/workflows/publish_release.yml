@@ -1,4 +1,4 @@
-name: Publish llama-index to PyPI / GitHub
+name: Publish LazyLLM to PyPI / GitHub
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
       - name: Install deps
         shell: bash
         run: pip install -e .
-      - name: Cache tiktoken and nltk files
+      - name: Test import
         shell: bash
         run: python -c "import lazyllm"
       - name: Build and publish to pypi
